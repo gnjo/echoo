@@ -31,7 +31,7 @@ s>{$$$}
 
 ```
 echooRead(text)
-function echoo(mes,o){
+function echoo(str,o){
  //callback;
 }
 ```
