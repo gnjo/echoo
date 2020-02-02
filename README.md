@@ -43,8 +43,12 @@ function vit(str,o){
 ;(function(root){
 
 ///
-//'MRK,KWT,SEL,MES,WIT,JMP,EVM,EVL,CMM'
+//'MRK,MOD,KWT,SEL,MES,WIT,JMP,EVM,EVL,CMM'
 let cmds={}
+cmds.MOD=(str,o)=>{
+ $$m=str.slice(1)
+ return o.next()
+}
 cmds.CMM=(str,o)=>{
  //comment
  return o.next()
