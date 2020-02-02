@@ -1,5 +1,13 @@
 /////////////////////////////////////////
-var $$k,$$n,$$s,$$o,$$$,
+var $$m //mode
+var $$k //key
+var $$n //select number -1 is cancel
+var $$s //select list
+var $$o //output
+var $$a //nowaddress
+var $$l //nowread line
+var $$j //jumpback line
+var $$$ //return    
 /////////////////////////////////////////
 ;(function(root){
  let fn={}
@@ -54,12 +62,12 @@ setInterval(()=>{
   ,types:'MRK,KWT,SEL,MES,WIT,JMP,EVM,EVL,CMM'.split(',')
   ,MRK:/^#.*/
   ,JMP:/^{.*}>>>(#.*|{.*})/ //jump
-  ,MES:/^(|\*|[ims][0-9])>.*/ //message input
+  ,MES:/^>.*/ //message input
   ,SEL:/^\?>.*/ //select
   ,EVL:/^{.*}/ //eval javascript
   ,EVM:/^{{{([\s\S]*?)}}}/ //eval message
   ,KWT:/^k>.*/ //key wait
-  ,WIT:/^\*[^>].*/ //increase the wait
+  ,WIT:/^\*/ //increase the wait
   ,CMM:/^.*/
  }
  function lexs(text,offset){
