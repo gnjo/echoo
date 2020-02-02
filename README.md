@@ -30,5 +30,8 @@ s>{$$$}
 ```
 
 ```
-echoo(text,(mes,o)=>{ },fps) //default 20
+echooRead(text)
+function echoo(mes,o){
+ //callback;
+}
 ```
