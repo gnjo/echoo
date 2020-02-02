@@ -57,10 +57,11 @@ setInterval(()=>{
 
 ;(function(root){
  let ma={
-  group:/#.*|{.*}>>>(#.*|{.*})|k>.*|(|\*|\?|[ims][0-9])>.*|\*[^>].*|{{{([\s\S]*?)}}}|{.*}|.*/g
+  group:/#.*|\!.*|{.*}>>>(#.*|{.*})|k>.*|(|\*|\?|[ims][0-9])>.*|\*[^>].*|{{{([\s\S]*?)}}}|{.*}|.*/g
   ,trim:/\/\*[\s\S]*?\*\/|([^\\:]|^)\/\/.*$/gm
-  ,types:'MRK,KWT,SEL,MES,WIT,JMP,EVM,EVL,CMM'.split(',')
+  ,types:'MRK,MOD,KWT,SEL,MES,WIT,JMP,EVM,EVL,CMM'.split(',')
   ,MRK:/^#.*/
+  ,MOD:/^\!.*/
   ,JMP:/^{.*}>>>(#.*|{.*})/ //jump
   ,MES:/^>.*/ //message input
   ,SEL:/^\?>.*/ //select
