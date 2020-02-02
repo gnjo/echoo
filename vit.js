@@ -8,51 +8,32 @@ var $$a //nowaddress
 var $$l //nowread line
 var $$j //jumpback line
 //var $$w //waitcount
-var $$$ //return    
+var $$$ //return
+
 /////////////////////////////////////////
-;(function(root){
- let fn={}
- fn.q=(s,doc=document)=>{return doc.querySelector(s)}
- let c={}
- c.keys={37:'<',39:'>',38:'^',40:'v',70:'A',68:'B',65:'X',83:'Y',82:'R',69:'L'}
- c.key0=''
- c.key1=''
- c.block=0
- c.flash=()=>{c.key0=c.key1=''}
- //c.fps=10
- c.add=(keystr)=>{
+var $keyconf=keyconfig('w,a,s,d,j,k,i,l,u,o')
+function keyconfig(str){
+  //$keyconf={37:'<',39:'>',38:'^',40:'v',70:'A',68:'B',65:'X',83:'Y',82:'R',69:'L'}
   let t="^,<,v,>,A,B,X,Y,L,R".split(',')
-  let k=keystr.split(',').map(d=>d.toUpperCase().charCodeAt(0))
-  c.keys={}
-  k.map((d,i)=>{ c.keys[d]=t[i] })
-  return c
+  ,k=str.split(',').map(d=>(d.length>1)?d:d.toUpperCase().charCodeAt(0))
+  ,keys={}
+  k.map((d,i)=>{ keys[d]=t[i] })
+  return keys
+}
+function keycall(caller){
+ $$k=''//oldkey reset
+ let el=document.documentElement,del=()=>{el.onkeydown=void 0}
+ //caller(k,del) //if use end, need the del()
+ el.onkeydown=function(ev){
+   if(/*$waitcount||*/!$keyconf[ev.which])return;
+   $$k=$keyconf[ev.which],caller($$k,del)
  }
- c.done=(/*fps,*/debughtml)=>{
-  //c.fps=fps||c.fps;
-  document.documentElement.addEventListener('keydown',function(ev){
-   if(!c.keys[ev.which])return;
-   if(c.block)return;  
-   if(c.key0) c.key1=c.key0;
-   c.key0=c.keys[ev.which]
-  })
-  ;
-  //setInterval(()=>{ c.key0='' },1000/c.fps)
-  ;
-  if(!fn.q(debughtml))return;
-  setInterval(()=>{fn.q(debughtml).textContent=c.key0+'　'},1000/60)
-  return c;
- }
- ;
- root.controller=c;
- //controller.done('pre')
-})(this);
+}
 /*
-let ctrl=controller;
-ctrl.add('w,a,s,d,j,k,i,l,u,o')
-ctrl.done()
-setInterval(()=>{
- fn.q('pre').textContent=ctrl.key0
-},200)
+keycall((k,del)=>{
+ fn.q('pre').textContent=k
+ if(k==='X')del();
+})
 */
 /////////////////////////////////////////
 
@@ -221,30 +202,18 @@ cmds.WIT=(str,o)=>{
 cmds.KWT=(str,o)=>{
  o.ctrl.flash()
  $$k=void 0
- let cl=setInterval(()=>{ if($$k) clearInterval(cl),o.next()},1000/o.fps)
+ keycall((k,del)=>{
+  if(k) o.next(),del();
+ })
  return;
 } 
 cmds.SEL=(str,o)=>{
  //...
- let se=$m9.split('\n'),n=0//($$n!=-1)?$$n:0
- $m9=se[n]
- o.ctrl.flash()
- let cl=setInterval(()=>{
-  $$k=o.ctrl.key0
-  if($$k==='A')return clearInterval(cl),$$$=$$0=$$n=n,$$1=se[n],o.next();
-  if($$k==='B')return clearInterval(cl),$$$=$$0=$$n=-1,$$1='',o.next();
-  if($$k==='^'){
-   n=(Math.max(n-1,0))%se.length,$$n=n,$m9=se[n]
-   //console.log($$k,n,$m9,se.length,se)
-   return o.ctrl.flash();
-  }
-  if($$k==='v'){
-   n=(n+1)%se.length,$$n=n,$m9=se[n]
-   //console.log($$k,n,$m9)   
-   return o.ctrl.flash();
-  }
-  
- },1000/o.fps) 
+ let se=$$s.split('\n'),n=0//($$n!=-1)?$$n:0
+ ,head=$$o//=se[n]
+ keycall((k,del)=>{
+  if(k) o.next(),del();
+ })
 
  }
 cmds.MES=(str,o)=>{
