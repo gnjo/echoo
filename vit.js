@@ -200,7 +200,6 @@ cmds.WIT=(str,o)=>{
  return;
 }
 cmds.KWT=(str,o)=>{
- o.ctrl.flash()
  $$k=void 0
  keycall((k,del)=>{
   if(k) del(),o.next();
@@ -229,7 +228,6 @@ cmds.MES=(str,o)=>{
   o.fps=20
   o.waitms=50
   o.keyset='w,a,s,d,j,k,i,l,u,o'
-  o.ctrl=controller
   o.cmds=cmds
   o.jumpback=0
   o.setjumpback=()=>{return o.jumpback=o.line+1}  
