@@ -7,6 +7,7 @@ var $$o //output
 var $$a //nowaddress
 var $$l //nowread line
 var $$j //jumpback line
+//var $$w //waitcount
 var $$$ //return    
 /////////////////////////////////////////
 ;(function(root){
