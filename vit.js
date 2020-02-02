@@ -9,7 +9,6 @@ var $$l //nowread line
 var $$j //jumpback line
 //var $$w //waitcount
 var $$$ //return
-
 /////////////////////////////////////////
 var $keyconf=keyconfig('w,a,s,d,j,k,i,l,u,o')
 function keyconfig(str){
@@ -36,7 +35,6 @@ keycall((k,del)=>{
 })
 */
 /////////////////////////////////////////
-
 ;(function(root){
  let ma={
   group:/#.*|\!.*|{.*}>>>(#.*|{.*})|k>.*|(|\*|\?|[ims][0-9])>.*|\*[^>].*|{{{([\s\S]*?)}}}|{.*}|.*/g
@@ -69,7 +67,6 @@ keycall((k,del)=>{
  ;
  root.lexs=lexs
 })(this);
-
 /////////////////////////////////////////
 ;(function(root){
  let lexs=root.lexs
@@ -113,15 +110,6 @@ keycall((k,del)=>{
   return o;
  }
  root.reader=entry;
-/*
-let li=`MRK\nCMM\nEVL「「あいうえを入れておく」」`.split('\n');
-let rd=reader(li);
-fn.q('button').onclick=()=>{
- fn.q('pre').textContent=rd.get();
- fn.q('pre.line').textContent=rd.line +','+ rd.end
- fn.q('pre.end').textContent=rd.isEnd()?'end':'not'
- rd.next();
-}*/
 })(this);
 /////////////////////////////////////////
 
@@ -161,7 +149,6 @@ fn.q('button').onclick=()=>{
 })(this);
 //////////////////////////////////////////////
 ;(function(root){
-
 ///
 //'MRK,MOD,KWT,SEL,MES,WIT,JMP,EVM,EVL,CMM'
 let cmds={}
@@ -189,7 +176,6 @@ cmds.JMP=(str,o)=>{
  //console.log('!jump!',i)
  return (!flg || i==void 0)?o.next():o.next(i)
 }
-
 cmds.MRK=(str,o)=>{
  $$$ = o.line////////
  return o.next();
@@ -221,11 +207,11 @@ cmds.MES=(str,o)=>{
  $$$=$$o=mes,o.next()
  return o.next()
  }
-
-///
+//////////////////////////////////
  function entry(text,debugflg){
   let o=reader();
   o.fps=20
+  o.interval=1000/o.fps
   o.waitms=50
   o.keyset='w,a,s,d,j,k,i,l,u,o'
   o.cmds=cmds
@@ -236,20 +222,23 @@ cmds.MES=(str,o)=>{
    //{str,type,line}
    return (o.cmds[list.type]||o.cmds['CMM'])(list.str,o)
   }
+  o.run=()=>{
+   o.add(text)
+   if(debugflg)console.log(o.lists)
+   //
+   o.cl=setInterval(()=>{
+     ///////////////
+     if(o.isend())return clearInterval(o.cl),console.log('endline') /////
+     let list=o.get();
+     if(list) o.cmd(list)
+     if(vit) vit($$o,o)
+     //////////////
+   },o.interval)
+    return o;
+  }
   ;
-  o.add(text)
-  if(debugflg)console.log(o.lists)
-  o.ctrl.add(o.keyset);
-  o.ctrl.done();
   //
-  o.cl=setInterval(()=>{
-  if(o.isend())return clearInterval(o.cl),console.log('endline') /////
-  let list=o.get();
-  if(list) o.cmd(list)
-  if(vit) vit($$o,o)
-  },1000/o.fps)  
-  //
-  return o;
+  return o.run();
  }
  root.vitRead=entry;
 })(this);
