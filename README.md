@@ -12,6 +12,7 @@ $$o //output
 $$a //address
 $$l //nowread line
 
+#mark
 m>xyz //mode change
 k> //keywait
 >{$$n} //output select number
@@ -25,4 +26,9 @@ ddd
 }}}
 s>{$$$}
 **** //one astrisk wait 50ms
+{1}>>>#aaaa
+```
+
+```
+echoo(text,(mes,o)=>{ })
 ```
