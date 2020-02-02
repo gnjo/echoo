@@ -149,65 +149,94 @@ keycall((k,del)=>{
 })(this);
 //////////////////////////////////////////////
 ;(function(root){
-///
-//'MRK,MOD,KWT,SEL,MES,WIT,JMP,EVM,EVL,CMM'
-let cmds={}
-cmds.MOD=(str,o)=>{
- $$m=str.slice(1)
- return o.next()
-}
-cmds.CMM=(str,o)=>{
- //comment
- return o.next()
-}
-cmds.EVL=(str,o)=>{
- $$$ = _(_t(str));
- return o.next();
-}
-cmds.EVM=(str,o)=>{
- $$$ =_m(_t2(str));///
- return o.next();
-}
-cmds.JMP=(str,o)=>{
- let a=str.split('>>>'),i=o.search(_m(a[1]))
- //console.log(a) 
- let flg = _(_t(a[0]));
- $$$ =flg;
- //console.log('!jump!',i)
- return (!flg || i==void 0)?o.next():o.next(i)
-}
-cmds.MRK=(str,o)=>{
- $$$ = o.line////////
- return o.next();
-}
-cmds.WIT=(str,o)=>{
- let time=o.waitms*str.length
- let cl=setTimeout(()=>{clearTimeout(cl),o.next()},time)
- return;
-}
-cmds.KWT=(str,o)=>{
- $$k=void 0
- keycall((k,del)=>{
-  if(k) del(),o.next();
- })
- return;
-} 
-cmds.SEL=(str,o)=>{
- //...
- let se=$$s.split('\n'),n=0//($$n!=-1)?$$n:0
- ,head=$$o//=se[n]
- keycall((k,del)=>{
-  if(k==='B') $$n=-1,del(),o.next();
-  if(k==='A') del(),o.next();
- })
-
+ const arrayChunk = ([...array], size = 1) => {
+  return array.reduce((acc, value, index) => index % size ? acc : [...acc, array.slice(index, index + size)], []);
  }
-cmds.MES=(str,o)=>{
- let a=str.split('>'),mes=_m(a[1],1)
- $$$=$$o=mes,o.next()
- return o.next()
+ function sel6(ary,_n,head,_cur,_smax){
+  let smax=_smax||6
+  ,n=_n%ary.length
+  ,cur=_cur||'＊'
+  ,a=arrayChunk(ary,smax)
+  ,pmax=a.length
+  ,pnow=Math.floor(n/smax)
+  ,b=a[pnow]
+  ,m=n%smax
+  ,mes1=`${head} [${pnow+1}/${pmax}]`+'\n'
+  ,mes2=b.map((d,i)=>(m===i)?cur+d:'　'+d).join('\n')
+  ;
+  return mes1+mes2
  }
-//////////////////////////////////
+ root.sel6=sel6
+ root.selnum=sel6
+ //
+}(this));
+///////////////////////////////////////
+;(function(root){
+ //'MRK,MOD,KWT,SEL,MES,WIT,JMP,EVM,EVL,CMM'
+ let cmds={}
+ cmds.MOD=(str,o)=>{
+  $$m=str.slice(1)
+  return o.next()
+ }
+ cmds.CMM=(str,o)=>{
+  //comment
+  return o.next()
+ }
+ cmds.EVL=(str,o)=>{
+  $$$ = _(_t(str));
+  return o.next();
+ }
+ cmds.EVM=(str,o)=>{
+  $$$ =_m(_t2(str));///
+  return o.next();
+ }
+ cmds.JMP=(str,o)=>{
+  let a=str.split('>>>'),i=o.search(_m(a[1]))
+  //console.log(a) 
+  let flg = _(_t(a[0]));
+  $$$ =flg;
+  //console.log('!jump!',i)
+  return (!flg || i==void 0)?o.next():o.next(i)
+ }
+ cmds.MRK=(str,o)=>{
+  $$$ = o.line////////
+  return o.next();
+ }
+ cmds.WIT=(str,o)=>{
+  let time=o.waitms*str.length
+  let cl=setTimeout(()=>{clearTimeout(cl),o.next()},time)
+  return;
+ }
+ cmds.KWT=(str,o)=>{
+  $$k=void 0
+  keycall((k,del)=>{
+   if(k) del(),o.next();
+  })
+  return;
+ } 
+ cmds.SEL=(str,o)=>{
+  //...
+  let a=str.split('>')
+  ,list=_(_t(a[1]));
+  let se=list.split('\n')
+  ,head=$$o//=se[n]
+  $$n=0;
+  $$s=se;
+  $$o=selnum(se,$$n,head,'＊',4);  
+  keycall((k,del)=>{
+   if(k==='B')return $$n=-1,del(),o.next();
+   if(k==='A')return $$$=se[$$n],del(),o.next();
+   if(k==='^') $$n--,$$n=($$n<0)?se.length-1:$$n
+   if(k==='v') $$n++,$$n=$$n%se.length;
+   $$o=selnum(se,$$n,head,'＊',4);   
+  })
+ }
+ cmds.MES=(str,o)=>{
+  let a=str.split('>'),mes=_m(a[1],1)
+  $$$=$$o=mes,o.next()
+  return o.next()
+ }
+ //////////////////////////////////
  function entry(text,debugflg){
   let o=reader();
   o.fps=20
@@ -227,14 +256,15 @@ cmds.MES=(str,o)=>{
    if(debugflg)console.log(o.lists)
    //
    o.cl=setInterval(()=>{
-     ///////////////
-     if(o.isend())return clearInterval(o.cl),console.log('endline') /////
-     let list=o.get();
-     if(list) o.cmd(list)
-     if(vit) vit($$o,o)
-     //////////////
+    ///////////////
+    if(o.isend())return clearInterval(o.cl),console.log('endline') /////
+    let list=o.get();
+    if(list) o.cmd(list)
+    if(list&&debugflg)console.log(list)
+    if(vit) vit($$o,o)
+    //////////////
    },o.interval)
-    return o;
+   return o;
   }
   ;
   //
@@ -242,4 +272,3 @@ cmds.MES=(str,o)=>{
  }
  root.vitRead=entry;
 })(this);
-
