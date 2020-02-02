@@ -253,19 +253,17 @@ root.cmds=cmds
    //{str,type,line}
    return (o.cmds[list.type]||o.cmds['CMM'])(list.str,o)
   }
-  o.run=()=>{
-   o.add(text)
-   if(debugflg)console.log(o.lists)
-   //
-   o.cl=setInterval(()=>{
-    ///////////////
+  o.lop=()=>{
     if(o.isend())return clearInterval(o.cl),console.log('endline') /////
     let list=o.get();
     if(list) o.cmd(list)
     if(list&&debugflg)console.log(list)
-    if(vit) vit($$o,o)
-    //////////////
-   },o.interval)
+    if(vit)return vit($$o,o)    
+  }
+  o.run=()=>{
+   o.add(text)
+   if(debugflg)console.log(o.lists)
+   o.cl=setInterval(o.lop,o.interval)
    return o;
   }
   ;
