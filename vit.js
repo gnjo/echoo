@@ -11,20 +11,20 @@ var $$$ //return
 var $$k //key
 var $keyconf=keyconfig('w,a,s,d,j,k,i,l,u,o')
 function keyconfig(str){
-  //$keyconf={37:'<',39:'>',38:'^',40:'v',70:'A',68:'B',65:'X',83:'Y',82:'R',69:'L'}
-  let t="^,<,v,>,A,B,X,Y,L,R".split(',')
-  ,k=str.split(',').map(d=>(d.length>1)?d:d.toUpperCase().charCodeAt(0))
-  ,keys={}
-  k.map((d,i)=>{ keys[d]=t[i] })
-  return keys
+ //$keyconf={37:'<',39:'>',38:'^',40:'v',70:'A',68:'B',65:'X',83:'Y',82:'R',69:'L'}
+ let t="^,<,v,>,A,B,X,Y,L,R".split(',')
+ ,k=str.split(',').map(d=>(d.length>1)?d:d.toUpperCase().charCodeAt(0))
+ ,keys={}
+ k.map((d,i)=>{ keys[d]=t[i] })
+ return keys
 }
 function keycall(caller){
  $$k=''//oldkey reset
  let el=document.documentElement,del=()=>{el.onkeydown=void 0}
  //caller(k,del) //if use end, need the del()
  el.onkeydown=function(ev){
-   if(/*$waitcount||*/!$keyconf[ev.which])return;
-   $$k=$keyconf[ev.which],caller($$k,del)
+  if(/*$waitcount||*/!$keyconf[ev.which])return;
+  $$k=$keyconf[ev.which],caller($$k,del)
  }
 }
 /*
@@ -234,10 +234,10 @@ keycall((k,del)=>{
   $$$=$$o=mes,o.next()
   return o.next()
  }
- 
-root.cmds=cmds
+
+ root.cmds=cmds
 })(this);
- //////////////////////////////////  
+//////////////////////////////////  
 ;(function(root){ 
  function entry(text,debugflg){
   let o=reader();
@@ -254,11 +254,11 @@ root.cmds=cmds
    return (o.cmds[list.type]||o.cmds['CMM'])(list.str,o)
   }
   o.lop=()=>{
-    if(o.isend())return clearInterval(o.cl),console.log('endline') /////
-    let list=o.get();
-    if(list) o.cmd(list)
-    if(list&&debugflg)console.log(list)
-    if(vit)return vit($$o,o)    
+   if(o.isend())return clearInterval(o.cl),console.log('endline') /////
+   let list=o.get();
+   if(list) o.cmd(list)
+   if(list&&debugflg)console.log(list)
+   if(vit)return vit($$o,o)    
   }
   o.run=()=>{
    o.add(text)
