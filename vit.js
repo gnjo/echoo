@@ -203,7 +203,7 @@ cmds.KWT=(str,o)=>{
  o.ctrl.flash()
  $$k=void 0
  keycall((k,del)=>{
-  if(k) o.next(),del();
+  if(k) del(),o.next();
  })
  return;
 } 
@@ -212,7 +212,8 @@ cmds.SEL=(str,o)=>{
  let se=$$s.split('\n'),n=0//($$n!=-1)?$$n:0
  ,head=$$o//=se[n]
  keycall((k,del)=>{
-  if(k) o.next(),del();
+  if(k==='B') $$n=-1,del(),o.next();
+  if(k==='A') del(),o.next();
  })
 
  }
