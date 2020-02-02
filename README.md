@@ -5,7 +5,7 @@
 ```
 $$m //mode
 $$k //key
-$$n //select number
+$$n //select number -1 is cancel
 $$s //select list
 $$o //output
 $$a //nowaddress
