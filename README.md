@@ -30,5 +30,5 @@ s>{$$$}
 ```
 
 ```
-echoo(text,(mes,o)=>{ })
+echoo(text,(mes,o)=>{ },fps) //default 20
 ```
