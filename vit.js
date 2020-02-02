@@ -235,7 +235,11 @@ keycall((k,del)=>{
   $$$=$$o=mes,o.next()
   return o.next()
  }
- //////////////////////////////////
+ 
+root.cmds=cmds
+}(this);
+ //////////////////////////////////  
+;(function(root){ 
  function entry(text,debugflg){
   let o=reader();
   o.fps=20
