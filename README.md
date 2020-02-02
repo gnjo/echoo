@@ -7,10 +7,11 @@ $$m //mode
 $$k //key
 $$n //select number
 $$s //select list
-$$$ //return
 $$o //output
-$$a //address
+$$a //nowaddress
 $$l //nowread line
+$$j //jumpback line
+$$$ //return
 
 #mark
 m>xyz //mode change
