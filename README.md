@@ -30,13 +30,6 @@ ddd
 **** //one astrisk wait 50ms
 {1}>>>#aaaa
 ```
-
-```
-vitRead(text)
-function vit(str,o){
- //callback;
-}
-```
 ```
 vitRead(text)
 function vit(mes,o){fn.q('pre').textContent=str}
