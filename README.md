@@ -1,7 +1,8 @@
-# echoo
-
+# vit
+```
 //keycall jump select output wait modechange
 //message five, choice 1+4
+```
 ```
 $$m //mode
 $$k //key
@@ -31,8 +32,8 @@ ddd
 ```
 
 ```
-echooRead(text)
-function echoo(str,o){
+vitRead(text)
+function vit(str,o){
  //callback;
 }
 ```
