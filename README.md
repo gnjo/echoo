@@ -17,7 +17,7 @@ $$$ //return
 #mark
 !xyz //mode change
 k> //keywait
->{$$k} //output select number
+>{$$k} //pressed key
 k>
 > //clear
 >choice is are?
@@ -28,6 +28,8 @@ ccc
 ddd
 }}}
 ?>{$$$}
+>select is {$$n} {$$$}
+k>
 **** //one astrisk wait 50ms
 {1}>>>#aaaa
 ```
