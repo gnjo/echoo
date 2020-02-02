@@ -17,7 +17,8 @@ $$$ //return
 #mark
 !xyz //mode change
 k> //keywait
->{$$n} //output select number
+>{$$k} //output select number
+k>
 > //clear
 >choice is are?
 {{{
