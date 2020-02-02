@@ -6,24 +6,23 @@
 $$m //mode
 $$k //key
 $$n //select number
+$$s //select list
 $$$ //return
 $$o //output
 $$a //address
 $$l //nowread line
 
-!>mes //mode change
-k>//keycall
->output
+m>xyz //mode change
+k> //keywait
+>{$$n} //output select number
 > //clear
+>choice is are?
 {{{
-a
-b
-c
-d
-e
+aaa
+bbb
+ccc
+ddd
 }}}
-?>{$$$}
-*** //wait
-{1}>>>#xyz
-
+s>{$$$}
+**** //one astrisk wait 50ms
 ```
