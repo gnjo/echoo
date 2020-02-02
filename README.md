@@ -14,7 +14,7 @@ $$j //jumpback line
 $$$ //return
 
 #mark
-m>xyz //mode change
+!xyz //mode change
 k> //keywait
 >{$$n} //output select number
 > //clear
@@ -25,7 +25,7 @@ bbb
 ccc
 ddd
 }}}
-s>{$$$}
+?>{$$$}
 **** //one astrisk wait 50ms
 {1}>>>#aaaa
 ```
