@@ -111,7 +111,6 @@ keycall((k,del)=>{
  root.reader=entry;
 })(this);
 /////////////////////////////////////////
-
 ;(function(root){
  let fn={}
  fn.toSmall=(str)=>{
@@ -168,7 +167,7 @@ keycall((k,del)=>{
  root.sel6=sel6
  root.selnum=sel6
  //
-}(this));
+})(this);
 ///////////////////////////////////////
 ;(function(root){
  //'MRK,MOD,KWT,SEL,MES,WIT,JMP,EVM,EVL,CMM'
@@ -237,7 +236,7 @@ keycall((k,del)=>{
  }
  
 root.cmds=cmds
-}(this);
+})(this);
  //////////////////////////////////  
 ;(function(root){ 
  function entry(text,debugflg){
