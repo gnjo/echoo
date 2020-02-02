@@ -1,4 +1,4 @@
-# shortviewer
+# echoo
 
 //keycall jump select output wait modechange
 //message five, choice 1+4
