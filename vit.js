@@ -1,15 +1,14 @@
 /////////////////////////////////////////
 var $$m //mode
-var $$k //key
 var $$n //select number -1 is cancel
 var $$s //select list
 var $$o //output
 var $$a //nowaddress
 var $$l //nowread line
 var $$j //jumpback line
-//var $$w //waitcount
 var $$$ //return
 /////////////////////////////////////////
+var $$k //key
 var $keyconf=keyconfig('w,a,s,d,j,k,i,l,u,o')
 function keyconfig(str){
   //$keyconf={37:'<',39:'>',38:'^',40:'v',70:'A',68:'B',65:'X',83:'Y',82:'R',69:'L'}
