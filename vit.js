@@ -8,6 +8,10 @@ var $$l //nowread line
 var $$j //jumpback line
 var $$$ //return
 /////////////////////////////////////////
+var $$f //v1.0 footstep address jump history
+var $$b //v1.1 background image
+var $$c //v1.2 center image
+/////////////////////////////////////////
 var $$k //key
 var $keyconf=keyconfig('w,a,s,d,j,k,i,l,u,o')
 function keyconfig(str){
@@ -98,7 +102,7 @@ keycall((k,del)=>{
   }
   o.reload=(_list)=>{
    o.block=1;
-   o.line=999;
+   o.line=999999;
    o.lists=_list||[]
    o.line=0;
    o.block=0;
@@ -189,8 +193,9 @@ keycall((k,del)=>{
   return o.next();
  }
  cmds.JMP=(str,o)=>{
-  let a=str.split('>>>'),i=o.search(_m(a[1]))
-  //console.log(a) 
+  let a=str.split('>>>'),addr=_m(a[1]),i=o.search(addr)
+  //console.log(a)
+  if($$a!=addr)o.setjumpback() //v0.9
   let flg = _(_t(a[0]));
   $$$ =flg;
   //console.log('!jump!',i)
@@ -198,6 +203,9 @@ keycall((k,del)=>{
  }
  cmds.MRK=(str,o)=>{
   $$$ = o.line////////
+  $$a =str;//v0.9
+  let n=$$f[str]
+  if(n||n===0) $$f[str]=n+1
   return o.next();
  }
  cmds.WIT=(str,o)=>{
@@ -247,14 +255,19 @@ keycall((k,del)=>{
   o.keyset='w,a,s,d,j,k,i,l,u,o'
   o.cmds=cmds
   o.jumpback=0
-  o.setjumpback=()=>{return o.jumpback=o.line+1}  
+  o.setjumpback=()=>{return $$j=o.jumpback=o.line+1}  //v0.9
   o.search=(d)=>{return (d==='###')?o.jumpback:o.jumps[d]}
+  o.makefootstep=()=>{
+   //v1.0 if footstep input like a save, $$f is exist.   
+   if(!$$f) $$f={},Object.keys(o.jumps).map(k=>$$f[k]=0);
+  }
   o.cmd=(list)=>{
    //{str,type,line}
    return (o.cmds[list.type]||o.cmds['CMM'])(list.str,o)
   }
   o.lop=()=>{
    if(o.isend())return clearInterval(o.cl),console.log('endline') /////
+   $$l=o.line //v0.9
    let list=o.get();
    if(list) o.cmd(list)
    if(list&&debugflg)console.log(list)
@@ -262,6 +275,7 @@ keycall((k,del)=>{
   }
   o.run=()=>{
    o.add(text)
+   o.makefootstep()//v1.0
    if(debugflg)console.log(o.lists)
    o.cl=setInterval(o.lop,o.interval)
    return o;
