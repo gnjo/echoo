@@ -1,5 +1,5 @@
 # vit
-## v0.9
+## v1.0
 ```
 //keycall jump select output wait modechange
 //message five, choice 1+4
