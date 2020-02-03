@@ -14,7 +14,7 @@ upstair="6" //ceiling
 3L,3C,3R
 2L,2C,2R
 1L,1C,1R
-0L,0C,0R
+0L,0C,0R  //stand 0C
 
 $wire //globalobject
 {'4L':{w,d,c},...}
