@@ -12,7 +12,7 @@ $$o //output
 $$a //nowaddress
 $$l //nowread line
 $$j //jumpback line
-
+$$f //footstep
 $$$ //return
 
 #mark
