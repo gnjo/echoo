@@ -16,7 +16,6 @@ upstair="6" //ceiling
 1L,1C,1R
 0L,0C,0R
 
-
 $wire //globalobject
 {'4L':{w,d,c},...}
 $wire['4L'].w //wallable
@@ -31,6 +30,6 @@ wire(`
 010
 010
 `)
-;//ex)draw($wire)
-
+;
+console.log($wire)
 ```
