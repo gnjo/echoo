@@ -1,4 +1,5 @@
 # wire
+https://codepen.io/gnjo/pen/XWJLgxd?editors=1010
 ```
 let o={}
 o.staircount=(i)=>{
