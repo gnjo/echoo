@@ -9,11 +9,15 @@ $$k //key
 $$n //select number -1 is cancel
 $$s //select list
 $$o //output
-$$a //nowaddress
-$$l //nowread line
-$$j //jumpback line
-$$f //footstep
+$$a //v0.9 nowaddress
+$$l //v0.9 nowread line
+$$j //v0.9 jumpback line
 $$$ //return
+///
+$$f //v1.0 footstep address jump history
+$$b //v1.1 background image
+$$c //v1.2 center image
+///
 
 #mark
 !xyz //mode change
