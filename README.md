@@ -16,12 +16,18 @@ $$j //v0.9 jumpback line
 $$$ //return
 ///
 $$f //v1.0 footstep address jump history
-$$b //v1.1 background image
-$$c //v1.2 center image
+$$b //v1.1 background image @
+$$c //v1.2 center image @@
+$$d //v1.3 soun"d" bgm &
+$$e //v1.4 sound effect &&
 ///
 
 #mark
 !xyz //mode change
+@castle //background
+@@king //center image
+&honorsong //bgm
+&&rap //se
 k> //keywait
 >{$$k} //pressed key
 k>
