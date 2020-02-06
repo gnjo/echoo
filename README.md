@@ -14,7 +14,7 @@ png2base64
 @catsle= //城背景
 data:base64/png;....
 
-@@treagurebox= //宝箱
+@@box= //宝箱
 ```
 
 ## v1.0
