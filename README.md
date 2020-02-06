@@ -1,4 +1,12 @@
 # vit
+```
+全てが一枚のスクリプトにまとまるように。
+ワイアーフレーム専用のスクリプトエンジン。
+ogg2base64
+png2base64
+
+```
+
 ## v1.0
 ```
 //keycall jump select output wait modechange
