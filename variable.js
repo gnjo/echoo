@@ -66,3 +66,15 @@
  }
  root.variable=entry;
 })(this);
+
+;(function(root){
+ //vit apply
+ let variable=root.variable
+ function entry(str,o){
+  let re=/%{{{([\s\S]*?)}}}/g
+  str.match(re).map(d=>variable(d,o))
+ }
+ root.variableRead=entry;
+})(this);
+
+
