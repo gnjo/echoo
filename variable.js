@@ -44,12 +44,20 @@
   if(re_sound.test(line))return 'multi'//'sound'
   return 'value'
  }
+ 
+ function makeobj(kary,vary){
+  let o={}
+  kary.map((key,i)=>oo[key]=vary[i])
+  return o;
+ }
+ 
  function entry(str,o){ 
   if(!str)return console.log('param 0 is null')
   let obj=o||this
   //type
   //multi,singleary,single,ary
   let key,type,keytype,a=__c(str).split('\n').map(__t).filter(d=>d)
+  ,objkeys //v1.2 aryobj objobj
   for(let line of a){
    let flg=0
    type=typecheck(line)
@@ -57,6 +65,16 @@
    if(type==='chunk')continue; //readchunk
    if(type==='value'&&keytype==='multi') obj[key]+=line+'\n',flg=1
    if(type==='value'&&keytype==='ary') obj[key].push(line.split(',').map(__n)),flg=1
+   if(type==='value'&&keytype==='aryobj'){ //v1.2
+    let vary=line.split(',').map(__n)
+    if(objkeys.length===vary.length)
+     obj[key].push( makeobj(objkeys,vary) ),flg=1
+   }
+   if(type==='value'&&keytype==='objobj'){ //v1.2
+    let vary=line.split(',').map(__n)
+    if(objkeys.length===vary.length)    
+    obj[key][objkeys[0] ]=makeobj(objkeys,vary ),flg=1
+   }
    if(flg)continue
    ;
    if(keytype==='multi')obj[key]=__t(obj[key])  //if old keytype multi is tailcut \n
@@ -69,10 +87,11 @@
    let b=line.split('=')
    key=b[0],line=b[1]
    if(keytype==='single') obj[key]=__n(line)
-   if(keytype==='singleary') obj[key]=line.split(',').map(__n)   
+   if(keytype==='singleary') obj[key]=line.split(',').map(__n)
+   if(keytype==='aryobj'||keytype==='objobj') obj[key]={},objkeys=line.replace(/{|}|\*/g,'').split(',')
   }
-  //special end linebreak
-  obj[key]=__t(obj[key])
+  //special end linebreak 
+  if(keytype==='multi') obj[key]=__t(obj[key]) //v1.2
   //
  }
  root.variable=entry;
