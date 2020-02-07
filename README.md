@@ -47,6 +47,7 @@ k>
 ```
 ```
 vitRead(text)
+//vitRead([text1,text2]) //v1.1
 function vit(mes,o){fn.q('pre').textContent=str}
 ```
 
