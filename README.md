@@ -65,10 +65,10 @@ LOAD
 CONFIG
 }}}
 ?>{$$$}
-{$$k===0}>>>#CITY
-{$$k===1}>>>#LOAD
-{$$k===2}>>>#CONFIG
-{$$k===-1}>>>#TITLE
+{$$n===0}>>>#CITY
+{$$n===1}>>>#LOAD
+{$$n===2}>>>#CONFIG
+{$$n===-1}>>>#TITLE
 
 {1}>>>#TITLE
 
