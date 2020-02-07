@@ -13,6 +13,13 @@
 ///////////////////////////////////////////////////////////
 //resource load
 %{{{
+$B01.map=
+
+$B01.title=flower graden 01
+$B01.desc=
+
+}}}
+%{{{
 //use head symbol $ @ @@ & &&
 @B01.bg=
 data:base64...
@@ -43,10 +50,6 @@ data:base64...
 @@B01.s4=
 ...
 
-@@B01.map=
-
-@@B01.title=flower graden 01
-@@B01.desc=
 ...
 
 }}}//%
