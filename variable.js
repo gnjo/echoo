@@ -1,4 +1,4 @@
-
+//v1.2 aryobj objobj
 ;(function(root){
  let num=/^([-+]?(?:\d*[\.]\d+|\d+))$/,headzero=/^0[0-9]/ //bugfix
  ,isstring=function(value){return toString.call(value) === '[object String]'}
@@ -28,7 +28,14 @@
   ,re_readchunk=/^\%{{{|^}}}/
   ,re_image=/^\@/
   ,re_sound=/^\&/
+  ,re_aryobj=/^\$.*={\*.+}/
+  ,re_objobj=/^\$.*={.+}/
+  ;
   if(re_readchunk.test(line))return 'chunk'
+  //
+  if(re_aryobj.test(line))return 'aryobj' //v1.2
+  if(re_objobj.test(line))return 'objobj' //v1.2
+  //
   if(re_multi.test(line))return 'multi'
   if(re_single.test(line)&&re_comma.test(line))return 'singleary'
   if(re_single.test(line))return 'single'
