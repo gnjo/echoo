@@ -37,7 +37,7 @@ $$v //v1.5 labyrinth vector N|E|W|S
 #mark
 !xyz //mode change
 @castle //background
-@@king //center image
+@@king //center image//if use commna l,c,r//v1.7 @@leftimage,@@centerimage,@@rightimage
 &honorsong //bgm
 &&rap //se
 k> //keywait
