@@ -80,7 +80,7 @@
    if(keytype==='multi')obj[key]=__t(obj[key])  //if old keytype multi is tailcut \n
    ;
    keytype=type;
-   if(keytype==='multi') key=line.replace('=',''),obj[key]=[],flg=1
+   if(keytype==='multi') key=line.replace('=',''),/*obj[key]=[]*/obj[key]='',flg=1 //??
    if(keytype==='ary') key=line,obj[key]=[],flg=1
    if(flg)continue
    ;
