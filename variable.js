@@ -25,6 +25,8 @@
   ,re_single=/^\$.*=.+/
   ,re_comma=/,/
   ,re_multi=/^\$.*=$/
+  ,re_readchunk=/^\%{{{|^}}}/
+  if(re_readchunk.test(line))return 'chunk'
   if(re_multi.test(line))return 'multi'
   if(re_single.test(line)&&re_comma.test(line))return 'singleary'
   if(re_single.test(line))return 'single'
@@ -41,6 +43,7 @@
    let flg=0
    type=typecheck(line)
    ;//console.log(type,line)
+   if(type==='chunk')continue; //readchunk
    if(type==='value'&&keytype==='multi') obj[key]+=line+'\n',flg=1
    if(type==='value'&&keytype==='ary') obj[key].push(line.split(',').map(__n)),flg=1
    if(flg)continue
