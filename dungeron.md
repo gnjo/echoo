@@ -13,39 +13,40 @@
 ///////////////////////////////////////////////////////////
 //resource load
 %{{{
-$B01.bg=
+//use head symbol $ @ @@ & &&
+@B01.bg=
 data:base64...
 
-$B01.side=
+@@B01.side=
 ...
 
-$B01.face=
+@@B01.face=
 ...
 
-$B01.ground=
+@@B01.ground=
 ...
 
-$B01.ceiling=
+@@B01.ceiling=
 
-$B01.s0=
+@@B01.s0=
 ...
 
-$B01.s1=
+@@B01.s1=
 ...
 
-$B01.s2=
+@@B01.s2=
 ...
 
-$B01.s3=
+@@B01.s3=
 ...
 
-$B01.s4=
+@@B01.s4=
 ...
 
-$B01.map=
+@@B01.map=
 
-$B01.title=flower graden 01
-$B01.desc=
+@@B01.title=flower graden 01
+@@B01.desc=
 ...
 
 }}}//%
