@@ -33,8 +33,8 @@
   ;
   if(re_readchunk.test(line))return 'chunk'
   //
+  if(re_objobj.test(line))return 'objobj' //v1.2  
   if(re_aryobj.test(line))return 'aryobj' //v1.2
-  if(re_objobj.test(line))return 'objobj' //v1.2
   //
   if(re_multi.test(line))return 'multi'
   if(re_single.test(line)&&re_comma.test(line))return 'singleary'
