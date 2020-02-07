@@ -2,7 +2,8 @@
 //dungeron script
 //dungeron B00 - B99
 
-%B01 //special address. resource load
+%{{{
+//resource load
 $B01.bg=
 data:base64...
 
@@ -36,9 +37,9 @@ $B01.map=
 
 $B01.title=flower graden 01
 $B01.desc=
-
-
 ...
+
+}}}//%
 
 #B01
 {$nowfloor==="B01"}>>>#B01.loaded
