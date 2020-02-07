@@ -91,7 +91,7 @@
    if(keytype==='aryobj'||keytype==='objobj') obj[key]={},objkeys=line.replace(/{|}|\*/g,'').split(',')
   }
   //special end linebreak 
-  if(keytype==='multi') obj[key]=__t(obj[key]) //v1.2
+  obj[key]=__t(obj[key]) //v1.2
   //
  }
  root.variable=entry;
