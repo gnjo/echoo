@@ -20,7 +20,7 @@ $zzzz={name,price,about} //aryobj //v1.2
 sword,300,this is sword. //$zzzz[0]={name:'sword',price:300,about:'this is sword'} //number is num
 shild,130,this is shild. //$zzzz[1]={name:'shild',price:130,about:'this is shild'}
 
-$kkkk={\{name},price,about} //key choice firstparam only //objobj //v1.2
+$kkkk={*name,price,about} //key choice firstparam only //objobj //v1.2
 sword,300,this is sword. //$kkkk['sword']={name:'sword',price:300,about:'this is sword'} //number is num
 shild,130,this is shild. //$kkkk['shild']={name:'shild',price:130,about:'this is shild'}
 
