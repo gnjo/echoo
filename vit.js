@@ -294,4 +294,7 @@ keycall((k,del)=>{
   return o.run();
  }
  root.vitRead=entry;
+ root.vit=function vit(mes){
+  //user function
+ }
 })(this);
