@@ -33,8 +33,8 @@
   if(re_single.test(line)&&re_comma.test(line))return 'singleary'
   if(re_single.test(line))return 'single'
   if(re_keyhead.test(line))return 'ary'
-  if(re_image.test(line))return 'image'
-  if(re_sound.test(line))return 'sound'
+  if(re_image.test(line))return 'multi'//'image'
+  if(re_sound.test(line))return 'multi'//'sound'
   return 'value'
  }
  function entry(str,o){ 
