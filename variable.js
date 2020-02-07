@@ -88,7 +88,9 @@
    key=b[0],line=b[1]
    if(keytype==='single') obj[key]=__n(line)
    if(keytype==='singleary') obj[key]=line.split(',').map(__n)
-   if(keytype==='aryobj'||keytype==='objobj') obj[key]={},objkeys=line.replace(/{|}|\*/g,'').split(',')
+   if(keytype==='aryobj') obj[key]=[],objkeys=line.replace(/{|}|\*/g,'').split(',')
+   if(keytype==='objobj') obj[key]={},objkeys=line.replace(/{|}|\*/g,'').split(',')
+   
   }
   //special end linebreak 
   obj[key]=__t(obj[key]) //v1.2
