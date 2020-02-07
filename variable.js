@@ -26,11 +26,15 @@
   ,re_comma=/,/
   ,re_multi=/^\$.*=$/
   ,re_readchunk=/^\%{{{|^}}}/
+  ,re_image=/^\@/
+  ,re_sound=/^\&/
   if(re_readchunk.test(line))return 'chunk'
   if(re_multi.test(line))return 'multi'
   if(re_single.test(line)&&re_comma.test(line))return 'singleary'
   if(re_single.test(line))return 'single'
   if(re_keyhead.test(line))return 'ary'
+  if(re_image.test(line))return 'image'
+  if(re_sound.test(line))return 'sound'
   return 'value'
  }
  function entry(str,o){ 
