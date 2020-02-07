@@ -1,6 +1,7 @@
 # variable
 ```
 //usage
+variableRead(text,this)
 variable(text,this)  //target the this[...]
 ```
 
