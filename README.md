@@ -1,5 +1,4 @@
 # vit
-
 ## v1.0
 ```
 //keycall jump select output wait modechange
@@ -51,5 +50,41 @@ vitRead(text)
 function vit(mes,o){fn.q('pre').textContent=str}
 ```
 
+# note
+```
+スクリプトの実行順を固定する。
+
+#SETUP
+{1}>>>#TITLE
+
+#TITLE
+{{{
+START
+LOAD
+CONFIG
+}}}
+?>{$$$}
+{$$k===0}>>>#CITY
+{$$k===1}>>>#LOAD
+{$$k===2}>>>#CONFIG
+{$$k===-1}>>>#TITLE
+
+{1}>>>#TITLE
+
+#LOAD
+...
+{1}>>>###
+#CONFIG
+{1}>>>#TITLE
+...
+
+#CITY
+{{{
+}}}
+?>{$$$}
+{1}>>>#CITY
+
+#B01...B99
+```
 
 
