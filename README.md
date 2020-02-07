@@ -1,5 +1,9 @@
 # vit
-## v1.0
+## v1.1
+```
+script(src="https://gnjo.github.io/vit/variable.js?v=1.0")
+script(src="https://gnjo.github.io/vit/vit.js?v=1.1")
+```
 ```
 //keycall jump select output wait modechange
 //message five, choice 1+4
