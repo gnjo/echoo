@@ -1,9 +1,18 @@
 ```
 //dungeron script
-//dungeron B00 - B99
+#B01
+{$nowfloor==="B01"}>>>#B01.loaded
+//
 
-%{{{
+
+#B01.loaded
+//event jump
+
+
+{1}>>>#walk
+///////////////////////////////////////////////////////////
 //resource load
+%{{{
 $B01.bg=
 data:base64...
 
@@ -41,16 +50,6 @@ $B01.desc=
 
 }}}//%
 
-#B01
-{$nowfloor==="B01"}>>>#B01.loaded
-//
-
-//
-#B01.loaded
-//event jump
-
-
-{1}>>>#walk
 ```
 
 ```
