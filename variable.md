@@ -1,5 +1,5 @@
 # variable
-## v1.0
+## v1.2
 ```
 //usage
 variableRead(text,this) //%{{{...}}} only
