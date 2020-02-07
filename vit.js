@@ -274,7 +274,9 @@ keycall((k,del)=>{
    if(vit)return vit($$o,o)    
   }
   o.run=()=>{
-   o.add(text)
+   let isstring = function(obj){return toString.call(obj) === '[object String]'}
+   isstring(text)?o.add(text):text.map(d=>o.add(d))//v1.0 multi text
+   //o.add(text)
    o.makefootstep()//v1.0
    if(debugflg)console.log(o.lists)
    o.cl=setInterval(o.lop,o.interval)
