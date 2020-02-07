@@ -1,27 +1,50 @@
 ```
 //dungeron script
 //dungeron B00 - B99
+
+%B01 //special address. resource load
+$B01.bg=
+data:base64...
+
+$B01.side=
+...
+
+$B01.face=
+...
+
+$B01.ground=
+...
+
+$B01.ceiling=
+
+$B01.s0=
+...
+
+$B01.s1=
+...
+
+$B01.s2=
+...
+
+$B01.s3=
+...
+
+$B01.s4=
+...
+
+$B01.map=
+
+$B01.title=flower graden 01
+$B01.desc=
+
+
+...
+
 #B01
 {$nowfloor==="B01"}>>>#B01.loaded
-{{{
-
-}}}
-map:{$$$}
-title:flower graden 01
-{{{
-}}}
-desc:{$$$}
 //
-side:aaa.png
-face:bbb.png
-ceiling:ccc.png
-ground:ddd.png
-//symbol 0 1 2 ...
-0:b1wall.png
-1:b1face.png
-2:...
-3:...
-4:...
+
+//
 #B01.loaded
 //event jump
 
