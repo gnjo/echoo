@@ -1,7 +1,7 @@
 # variable
 ```
 //usage
-variableRead(text,this)
+variableRead(text,this) //%{{{...}}} only
 variable(text,this)  //target the this[...]
 ```
 
