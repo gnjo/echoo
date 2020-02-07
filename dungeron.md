@@ -51,6 +51,12 @@ data:base64...
 
 }}}//%
 
+
+%{{{ //audio
+&&B01.click=
+data:audio/wav;base64,...
+
+}}}
 ```
 
 ```
