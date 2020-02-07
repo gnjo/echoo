@@ -13,6 +13,8 @@ $$m //mode
 $$k //key
 $$n //select number -1 is cancel
 $$s //select list
+$$n2 //v1.6 select2 number -1 is cancel
+$$s2 //v1.6 select2
 $$o //output
 $$a //v0.9 nowaddress
 $$l //v0.9 nowread line
