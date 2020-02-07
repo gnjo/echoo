@@ -42,6 +42,7 @@ keycall((k,del)=>{
  let ma={
   group:/#.*|\!.*|{.*}>>>(#.*|{.*})|k>.*|(|\*|\?|[ims][0-9])>.*|\*[^>].*|{{{([\s\S]*?)}}}|{.*}|.*/g
   ,trim:/\/\*[\s\S]*?\*\/|([^\\:]|^)\/\/.*$/gm
+  ,trim2:/%{{{([\s\S]*?)}}}/gm //trim2
   ,types:'MRK,MOD,KWT,SEL,MES,WIT,JMP,EVM,EVL,CMM'.split(',')
   ,MRK:/^#.*/
   ,MOD:/^\!.*/
@@ -57,7 +58,7 @@ keycall((k,del)=>{
  function lexs(text,offset){
   let oi=offset||0
   let jumps={}
-  let lists=text.replace(ma.trim,'').match(ma.group)
+  let lists=text.replace(ma.trim,'').replace(ma.trim2,'').match(ma.group)  //v1.5 %{{{}}} cut
   .map((d,i)=>{
    let type='CMM';
    for(type of ma.types)
