@@ -12,6 +12,7 @@ var $$f //v1.0 footstep address jump history
 var $$b //v1.1 background image
 var $$c //v1.2 center image
 /////////////////////////////////////////
+var $$r //v1.5 resource 
 var $$k //key
 var $keyconf=keyconfig('w,a,s,d,j,k,i,l,u,o')
 function keyconfig(str){
@@ -247,7 +248,9 @@ keycall((k,del)=>{
  root.cmds=cmds
 })(this);
 //////////////////////////////////  
-;(function(root){ 
+;(function(root){
+ let variableRead=root.variableRead //v1.5
+ 
  function entry(text,debugflg){
   let o=reader();
   o.fps=20
@@ -255,6 +258,7 @@ keycall((k,del)=>{
   o.waitms=50
   o.keyset='w,a,s,d,j,k,i,l,u,o'
   o.cmds=cmds
+  o.variable=variableRead //v1.5
   o.jumpback=0
   o.setjumpback=()=>{return $$j=o.jumpback=o.line+1}  //v0.9
   o.search=(d)=>{return (d==='###')?o.jumpback:o.jumps[d]}
@@ -275,7 +279,9 @@ keycall((k,del)=>{
    if(vit)return vit($$o,o)    
   }
   o.run=()=>{
+   if(!$$r) $$r={}
    let isstring = function(obj){return toString.call(obj) === '[object String]'}
+   isstring(text)?o.variable(text,$$r):text.map(d=>o.variable(d,$$r))//v1.5 multi text
    isstring(text)?o.add(text):text.map(d=>o.add(d))//v1.0 multi text
    //o.add(text)
    o.makefootstep()//v1.0
