@@ -33,7 +33,7 @@
   if(re_keyhead.test(line))return 'ary'
   return 'value'
  }
- function entry(str,o){
+ function entry(str,o){ 
   if(!str)return console.log('param 0 is null')
   let obj=o||this
   //type
