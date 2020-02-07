@@ -74,6 +74,9 @@ function vit(mes,o){fn.q('pre').textContent=str}
 
 # note
 ```
+キー入力待ちは$$kが空になる事を調べてトリガーとする。
+```
+```
 スクリプトの実行順を固定する。
 
 #SETUP
