@@ -21,6 +21,12 @@ $$c //v1.2 center image @@
 $$d //v1.3 soun"d" bgm &
 $$e //v1.4 sound effect &&
 ///
+$$r //v1.1 resource object ex)$$r['@castle']
+$$x //v1.5 labyrinth pos x
+$$y //v1.5 labyrinth pos y
+$$z //v1.5 labyrinth pos z, floor number
+$$v //v1.5 labyrinth vector N|E|W|S
+//
 
 #mark
 !xyz //mode change
@@ -44,6 +50,17 @@ ddd
 k>
 **** //one astrisk wait 50ms
 {1}>>>#aaaa
+
+%{{{ //v1.1 resource load. early load //$$r['@citybackground']
+@citybackground=
+base64 png...
+
+&sound=
+base64 ogg...
+&&effect1=
+base64 ogg...
+}}}
+
 ```
 ```
 vitRead(text)
