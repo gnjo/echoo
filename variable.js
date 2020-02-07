@@ -28,8 +28,8 @@
   ,re_readchunk=/^\%{{{|^}}}/
   ,re_image=/^\@/
   ,re_sound=/^\&/
-  ,re_aryobj=/^\$.*={\*.+}/
-  ,re_objobj=/^\$.*={.+}/
+  ,re_aryobj=/^\$.*={.+}/
+  ,re_objobj=/^\$.*={\*.+}/
   ;
   if(re_readchunk.test(line))return 'chunk'
   //
@@ -73,7 +73,7 @@
    if(type==='value'&&keytype==='objobj'){ //v1.2
     let vary=line.split(',').map(__n)
     if(objkeys.length===vary.length)    
-    obj[key][objkeys[0] ]=makeobj(objkeys,vary ),flg=1
+    obj[key][vary[0] ]=makeobj(objkeys,vary ),flg=1
    }
    if(flg)continue
    ;
