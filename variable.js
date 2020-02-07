@@ -47,7 +47,7 @@
  
  function makeobj(kary,vary){
   let o={}
-  kary.map((key,i)=>oo[key]=vary[i])
+  kary.map((key,i)=>o[key]=vary[i])
   return o;
  }
  
