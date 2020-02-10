@@ -104,6 +104,7 @@
  let variable=root.variable
  function entry(str,o){
   let re=/%{{{([\s\S]*?)}}}/g
+  if(!re.test(str))return;
   str.match(re).map(d=>variable(d,o))
  }
  root.variableRead=entry;
