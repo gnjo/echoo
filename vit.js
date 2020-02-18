@@ -249,7 +249,8 @@ keycall((k,del)=>{
 })(this);
 //////////////////////////////////  
 ;(function(root){
- let variableRead=root.variableRead //v1.5
+ //if vairable not include stab
+ let variableRead=root.variableRead || function(){return console.log('variable.js not include')} //v1.5
  
  function entry(text,debugflg){
   let o=reader();
