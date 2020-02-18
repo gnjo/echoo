@@ -253,7 +253,7 @@ keycall((k,del)=>{
  
  function entry(text,debugflg){
   let o=reader();
-  o.fps=20
+  o.fps=60//20
   o.interval=1000/o.fps
   o.waitms=50
   o.keyset='w,a,s,d,j,k,i,l,u,o'
