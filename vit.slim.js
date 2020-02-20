@@ -23,8 +23,9 @@ var vlib={}
 
 /////////////////////////////////////////
 var $$l //nowread line
-var $$j //jumpback line
 var $$$ //return
+//$MRK
+//$JMP
 /////////////////////////////////////////
 var $$f //v1.0 footstep address jump history
 var $$k //key
@@ -196,7 +197,7 @@ keycall((k,del)=>{
   o._fps=_fps||60
   o.cmds=Object.assign(vlib,userlib)
   o.jumpback=0
-  o.setjumpback=()=>{return $$j=o.jumpback=o.line+1}  //v0.9
+  o.setjumpback=()=>{return o.jumpback=o.line+1}  //v0.9
   o.search=(d)=>{return (d==='###')?o.jumpback:o.jumps[d]}
   o.makefootstep=()=>{
    //v1.0 if footstep input like a save, $$f is exist.   
