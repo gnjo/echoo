@@ -203,7 +203,7 @@ keycall((k,del)=>{
 //////////////////////////////////  
 ;(function(root){
  let vlib=root.vlib,fps=root.fps
- function entry(text,userlib,_fps){
+ function entry(text,userlib,_fps,debugflg){
   let o=reader();
   o.keyset='w,a,s,d,j,k,i,l,u,o'
   o._fps=_fps||60
