@@ -29,6 +29,7 @@ var $$$ //return
 /////////////////////////////////////////
 var $$f //v1.0 footstep address jump history
 var $$k //key
+var $k //same
 var $keyconf=keyconfig('w,a,s,d,j,k,i,l,u,o')
 function keyconfig(str){
  //$keyconf={37:'<',39:'>',38:'^',40:'v',70:'A',68:'B',65:'X',83:'Y',82:'R',69:'L'}
