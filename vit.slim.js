@@ -25,6 +25,7 @@ var vlib={}
 /////////////////////////////////////////
 var $$l //nowread line
 var $$$ //return
+var $wk //dump
 /////////////////////////////////////////
 var $$f //v1.0 footstep address jump history
 var $$k //key
