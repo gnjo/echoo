@@ -18,6 +18,7 @@ vit([],lib)
 ```
 ```
 #start
+mode>xyz
 xyz>aaaaa
 xyz>{$$$}
 //return $xyz
