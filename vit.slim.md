@@ -1,5 +1,6 @@
 # vit slim
 most minimal
+target 100line
 ```
 let lib={}
 lib.xyz=(x,vit)=>{
