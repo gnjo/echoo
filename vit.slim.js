@@ -22,11 +22,6 @@ var vlib={}
 })(this); 
 
 /////////////////////////////////////////
-var $$m //mode
-var $$n //select number -1 is cancel
-var $$s //select list
-var $$o //output
-var $$a //nowaddress
 var $$l //nowread line
 var $$j //jumpback line
 var $$$ //return
