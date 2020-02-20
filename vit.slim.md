@@ -29,7 +29,7 @@ $aaa=eeaeare; //$head is single line javascript
 ```
 //fps
 ;(function(root){
- var fps = 30,ms=50,count=0,callary=[],running=false
+ var fps=60,ms=50,count=0,callary=[],running=false
  ;
  function loop() {
   callary.map(f=>f(count))
