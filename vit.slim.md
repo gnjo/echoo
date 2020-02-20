@@ -14,7 +14,7 @@ vit([],lib)
 xyz>aaaaa
 xyz>{$$$}
 //return $xyz
-{/*single line javascript*/}
+$aaa=eeaeare; //$head is single line javascript
 {{{
 }}}
 {1}>>>#aaa
