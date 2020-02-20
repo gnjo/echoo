@@ -12,8 +12,12 @@ vit([],lib)
 ```
 #start
 xyz>aaaaa
+xyz>{$$$}
 //return $xyz
+{/*single line javascript*/}
 {{{
 }}}
 {1}>>>#aaa
+{1}>>>{$$$}
+
 ```
