@@ -25,8 +25,6 @@ var vlib={}
 /////////////////////////////////////////
 var $$l //nowread line
 var $$$ //return
-//$MRK
-//$JMP
 /////////////////////////////////////////
 var $$f //v1.0 footstep address jump history
 var $$k //key
@@ -48,18 +46,15 @@ function keycall(caller){
   $$k=$keyconf[ev.which],caller($$k,del)
  }
 }
-/*
-keycall((k,del)=>{
+/*keycall((k,del)=>{
  fn.q('pre').textContent=k
  if(k==='X')del();
-})
-*/
+})*/
 /////////////////////////////////////////
 ;(function(root){
+  //MRK JMP FNC EVM EVL  
  let ma={
-  //MRK JMP FNC EVM EVL 
   group:/#.*|{.*}>>>(#.*|{.*}|\d.*)|([\w\d].*)>.*|{{{([\s\S]*?)}}}|\$.*=.*/g
-  //group:/#.*|\!.*|{.*}>>>(#.*|{.*})|k>.*|(|\*|\?|[ims][0-9])>.*|\*[^>].*|{{{([\s\S]*?)}}}|{.*}|.*/g
   ,trim:/\/\*[\s\S]*?\*\/|([^\\:]|^)\/\/.*$/gm
   ,types:'MRK,JMP,EVM,FNC,EVL,CMM'.split(',')
   ,MRK:/^#.*/
@@ -70,8 +65,7 @@ keycall((k,del)=>{
   ,CMM:/^.*/
  }
  function lexs(text,offset){
-  let oi=offset||0
-  let jumps={}
+  let oi=offset||0,jumps={}
   let lists=text.replace(ma.trim,'').replace(ma.trim2,'').match(ma.group)  //v1.5 %{{{}}} cut
   .map((d,i)=>{
    let type='CMM';
@@ -90,12 +84,7 @@ keycall((k,del)=>{
  let lexs=root.lexs
  function entry(){
   let o={}
-  o.lists=[] //lists
-  o.jumps={}
-  o.line=0 //count
-  o.block=0 //flg
-  o.end=0 //flg
-  o.lexs=lexs
+  o.lists=[], o.jumps={}, o.line=0, o.block=0, o.end=0, o.lexs=lexs
   ;
   o.add=(text)=>{
    let x=o.lexs(text,o.lists.length)
@@ -161,7 +150,7 @@ keycall((k,del)=>{
 //////////////////////////////////////////////
 ;(function(root){
   //MRK JMP FNC EVM EVL 
-  let vlib=root.vlib 
+ let vlib=root.vlib 
  vlib.CMM=(str,o)=>{return o.next()}
  vlib.EVL=(str,o)=>{return $$$ = _(_t(str)),o.next()}
  vlib.EVM=(str,o)=>{return $$$ =_m(_t2(str)),o.next()}
@@ -237,7 +226,6 @@ keycall((k,del)=>{
    return o;
   }
   ;
-  //
   return o.run();
  }
  root.vit=entry;
