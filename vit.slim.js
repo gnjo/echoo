@@ -32,10 +32,6 @@ var $$j //jumpback line
 var $$$ //return
 /////////////////////////////////////////
 var $$f //v1.0 footstep address jump history
-var $$b //v1.1 background image
-var $$c //v1.2 center image
-/////////////////////////////////////////
-var $$r //v1.5 resource 
 var $$k //key
 var $keyconf=keyconfig('w,a,s,d,j,k,i,l,u,o')
 function keyconfig(str){
@@ -198,17 +194,12 @@ keycall((k,del)=>{
 })(this);
 //////////////////////////////////  
 ;(function(root){
- //if vairable not include stab
- let variableRead=root.variableRead || function(){return console.log('variable.js not include')} //v1.5
- 
- function entry(text,debugflg){
+ let vlib=root.vlib,fps=root.fps
+ function entry(text,userlib,_fps){
   let o=reader();
-  o.fps=60//20
-  o.interval=1000/o.fps
-  o.waitms=50
   o.keyset='w,a,s,d,j,k,i,l,u,o'
-  o.cmds=cmds
-  o.variable=variableRead //v1.5
+  o._fps=_fps||60
+  o.cmds=Object.assign(vlib,userlib)
   o.jumpback=0
   o.setjumpback=()=>{return $$j=o.jumpback=o.line+1}  //v0.9
   o.search=(d)=>{return (d==='###')?o.jumpback:o.jumps[d]}
@@ -216,35 +207,27 @@ keycall((k,del)=>{
    //v1.0 if footstep input like a save, $$f is exist.   
    if(!$$f) $$f={},Object.keys(o.jumps).map(k=>$$f[k]=0);
   }
-  o.cmd=(list)=>{
-   //{str,type,line}
+  o.cmd=(list)=>{//{str,type,line}
    return (o.cmds[list.type]||o.cmds['CMM'])(list.str,o)
   }
   o.lop=()=>{
-   if(o.isend())return clearInterval(o.cl),console.log('endline') /////
+   if(o.isend())return console.log('endline') /////
    $$l=o.line //v0.9
    let list=o.get();
    if(list) o.cmd(list)
    if(list&&debugflg)console.log(list)
-   if(vit)return vit($$o,o)    
   }
   o.run=()=>{
-   if(!$$r) $$r={}
    let isstring = function(obj){return toString.call(obj) === '[object String]'}
-   isstring(text)?o.variable(text,$$r):text.map(d=>o.variable(d,$$r))//v1.5 multi text
    isstring(text)?o.add(text):text.map(d=>o.add(d))//v1.0 multi text
-   //o.add(text)
    o.makefootstep()//v1.0
-   if(debugflg)console.log(o.lists)
-   o.cl=setInterval(o.lop,o.interval)
+   if(debugflg)console.log(o.lists)   
+   fps(_fps,o.lop)
    return o;
   }
   ;
   //
   return o.run();
  }
- root.vitRead=entry;
- root.vit=function vit(mes){
-  //user function
- }
+ root.vit=entry;
 })(this);
