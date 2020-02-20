@@ -188,6 +188,18 @@ keycall((k,del)=>{
  }
  root.vlib=vlib
 })(this);
+//////////////////////////////////
+;(function(root){
+  let vlib=root.vlib
+  vlib.k=(str,o)=>{
+  $k=$$k=void 0
+  keycall((k,del)=>{
+   if(k) $k=k,del(),o.next();
+  })
+  return;
+ } 
+ root.vlib=vlib
+})(this);
 //////////////////////////////////  
 ;(function(root){
  let vlib=root.vlib,fps=root.fps
