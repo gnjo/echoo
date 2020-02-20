@@ -1,3 +1,4 @@
+const CR="\n";
 var vlib={}
 
 ;(function(root){
