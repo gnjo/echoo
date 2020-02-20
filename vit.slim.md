@@ -28,9 +28,13 @@ $aaa=eeaeare; //$head is single line javascript
 {1}>>>{$$$}
 
 ```
-## vit(textary,lib) fps(frame,caller)
+## vit(textary,lib) vlib={} fps(frame,caller)
 ```
-//tw
+vit=(ary,lib)=>{
+
+ vlib=Object.assign(vlib,lib)
+}
+
 ```
 
 ```
