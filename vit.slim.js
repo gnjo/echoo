@@ -186,7 +186,7 @@ keycall((k,del)=>{
   let a=str.split('>'),cmd=a[0],_str=a[1]
   if(!vlib[cmd])return vlib.CMM(str,o),console.log('vlib cmd not found',cmd)
   //
-  if(root['$'+cmd]) root['$'+cmd]=void 0 //create valiable
+  if(root['$'+cmd]===undefined) root['$'+cmd]=void 0 //create valiable
   return vlib[cmd](_str,o) //call next() is top function
  }
  root.vlib=vlib
