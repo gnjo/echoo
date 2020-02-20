@@ -34,7 +34,7 @@ $aaa=eeaeare; //$head is single line javascript
  function loop() {
   callary.map(f=>f(count))
   if(stopflg)return clearTimeout(cl)
-  cl=setTimeout(()=>{return ++count,requestAnimationFrame(loop)},ms)
+  return cl=setTimeout(()=>{return ++count,requestAnimationFrame(loop)},ms)
  }
  function entry(_fps,_caller){
   if(_caller) callary.push(_caller)
@@ -42,7 +42,7 @@ $aaa=eeaeare; //$head is single line javascript
   return fps=_fps||60,ms=1000/fps,loop()
  }
  function getcount(){return count}
- function fpsclear(debugmes){return stopflg=1,console.log(debugmes,'fpsclear')}
+ function fpsclear(debugmes){return stopflg=true,console.log(debugmes,'fpsclear')}
  ;
  root.fps=entry
  root.fpsclear=fpsclear
