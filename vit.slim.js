@@ -62,19 +62,16 @@ keycall((k,del)=>{
 /////////////////////////////////////////
 ;(function(root){
  let ma={
-  group:/#.*|\!.*|{.*}>>>(#.*|{.*})|k>.*|(|\*|\?|[ims][0-9])>.*|\*[^>].*|{{{([\s\S]*?)}}}|{.*}|.*/g
+  //MRK JMP FNC EVS EVL 
+  let group=/#.*|{.*}>>>(#.*|{.*}|\d+$)|([\w\d].*)>.*|{{{([\s\S]*?)}}}|\$.*=.*/g 
+  //group:/#.*|\!.*|{.*}>>>(#.*|{.*})|k>.*|(|\*|\?|[ims][0-9])>.*|\*[^>].*|{{{([\s\S]*?)}}}|{.*}|.*/g
   ,trim:/\/\*[\s\S]*?\*\/|([^\\:]|^)\/\/.*$/gm
-  ,trim2:/%{{{([\s\S]*?)}}}/gm //trim2
-  ,types:'MRK,MOD,KWT,SEL,MES,WIT,JMP,EVM,EVL,CMM'.split(',')
+  ,types:'MRK,JMP,EVM,FNC,EVL,CMM'.split(',')
   ,MRK:/^#.*/
-  ,MOD:/^\!.*/
-  ,JMP:/^{.*}>>>(#.*|{.*})/ //jump
-  ,MES:/^>.*/ //message input
-  ,SEL:/^\?>.*/ //select
-  ,EVL:/^{.*}/ //eval javascript
+  ,JMP:/^{.*}>>>(#.*|{.*}|\d+$)/ //jump
+  ,EVL:/^\$.*=.*/ //eval javascript
   ,EVM:/^{{{([\s\S]*?)}}}/ //eval message
-  ,KWT:/^k>.*/ //key wait
-  ,WIT:/^\*/ //increase the wait
+  ,FNC:/^([\w\d].*)>.*/
   ,CMM:/^.*/
  }
  function lexs(text,offset){
