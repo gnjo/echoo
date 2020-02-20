@@ -3,8 +3,7 @@ most minimal
 ```
 let lib={}
 lib.xyz=(x,vit)=>{
-vit.next()
-return x
+return vit.next(x)
 }
 vit([],lib)
 
