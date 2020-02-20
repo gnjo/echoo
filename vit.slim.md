@@ -3,7 +3,7 @@ most minimal
 target 100line
 ```
 let lib={}
-lib.xyz=(x,vit)=>{
+lib.xyz=(str,vit)=>{
 return vit.next(x)
 }
 vit([],lib)
