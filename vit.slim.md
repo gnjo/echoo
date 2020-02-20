@@ -3,8 +3,15 @@ most minimal
 target 100line
 ```
 let lib={}
-lib.xyz=(str,vit)=>{
-return vit.next(x)
+//$$$ is special
+lib.$$=(str,o)=>{
+ $$$=str;
+ o.next();
+}
+lib.k=(str,o)=>{
+
+ o.next();
+ $k=
 }
 vit([],lib)
 
