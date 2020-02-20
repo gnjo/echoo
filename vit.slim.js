@@ -1,3 +1,5 @@
+var vlib={}
+
 ;(function(root){
  var fps=60,ms=50,count=0,callary=[],running=false,stopflg=false,cl=void 0
  ;
@@ -62,13 +64,13 @@ keycall((k,del)=>{
 /////////////////////////////////////////
 ;(function(root){
  let ma={
-  //MRK JMP FNC EVS EVL 
-  let group=/#.*|{.*}>>>(#.*|{.*}|\d+$)|([\w\d].*)>.*|{{{([\s\S]*?)}}}|\$.*=.*/g 
+  //MRK JMP FNC EVM EVL 
+  group:/#.*|{.*}>>>(#.*|{.*}|\d.*)|([\w\d].*)>.*|{{{([\s\S]*?)}}}|\$.*=.*/g
   //group:/#.*|\!.*|{.*}>>>(#.*|{.*})|k>.*|(|\*|\?|[ims][0-9])>.*|\*[^>].*|{{{([\s\S]*?)}}}|{.*}|.*/g
   ,trim:/\/\*[\s\S]*?\*\/|([^\\:]|^)\/\/.*$/gm
   ,types:'MRK,JMP,EVM,FNC,EVL,CMM'.split(',')
   ,MRK:/^#.*/
-  ,JMP:/^{.*}>>>(#.*|{.*}|\d+$)/ //jump
+  ,JMP:/^{.*}>>>(#.*|{.*}|\d.*)/ //jump
   ,EVL:/^\$.*=.*/ //eval javascript
   ,EVM:/^{{{([\s\S]*?)}}}/ //eval message
   ,FNC:/^([\w\d].*)>.*/
@@ -103,8 +105,7 @@ keycall((k,del)=>{
   o.lexs=lexs
   ;
   o.add=(text)=>{
-   let l=o.lists.length
-   let x=o.lexs(text,l)
+   let x=o.lexs(text,o.lists.length)
    o.lists=o.lists.concat(x.lists)
    o.jumps=Object.assign(o.jumps,x.jumps)
    return o;
@@ -116,17 +117,12 @@ keycall((k,del)=>{
    return s;
   }
   o.next=(d)=>{
-   (d!=null)?o.line=d:o.line++;
+   ;(d!=null)?o.line=d:o.line++;
    o.end=(o.lists.length-1<o.line)?1:0;
    return o.block=0
   }
   o.reload=(_list)=>{
-   o.block=1;
-   o.line=999999;
-   o.lists=_list||[]
-   o.line=0;
-   o.block=0;
-   return;
+   return o.block=1,o.line=999999,o.lists=_list||[],o.line=0,o.block=0;
   }
   o.isend=()=>{return o.end}
   o.isEnd=o.isend
@@ -171,99 +167,34 @@ keycall((k,del)=>{
 })(this);
 //////////////////////////////////////////////
 ;(function(root){
- const arrayChunk = ([...array], size = 1) => {
-  return array.reduce((acc, value, index) => index % size ? acc : [...acc, array.slice(index, index + size)], []);
- }
- function sel6(ary,_n,head,_cur,_smax){
-  let smax=_smax||6
-  ,n=_n%ary.length
-  ,cur=_cur||'＊'
-  ,a=arrayChunk(ary,smax)
-  ,pmax=a.length
-  ,pnow=Math.floor(n/smax)
-  ,b=a[pnow]
-  ,m=n%smax
-  ,mes1=`${head} [${pnow+1}/${pmax}]`+'\n'
-  ,mes2=b.map((d,i)=>(m===i)?cur+d:'　'+d).join('\n')
-  ;
-  return mes1+mes2
- }
- root.sel6=sel6
- root.selnum=sel6
- //
-})(this);
-///////////////////////////////////////
-;(function(root){
- //'MRK,MOD,KWT,SEL,MES,WIT,JMP,EVM,EVL,CMM'
- let cmds={}
- cmds.MOD=(str,o)=>{
-  $$m=str.slice(1)
-  return o.next()
- }
- cmds.CMM=(str,o)=>{
-  //comment
-  return o.next()
- }
- cmds.EVL=(str,o)=>{
-  $$$ = _(_t(str));
-  return o.next();
- }
- cmds.EVM=(str,o)=>{
-  $$$ =_m(_t2(str));///
-  return o.next();
- }
- cmds.JMP=(str,o)=>{
-  let a=str.split('>>>'),addr=_m(a[1]),i=o.search(addr)
+  //MRK JMP FNC EVM EVL 
+  let vlib=root.vlib 
+ vlib.CMM=(str,o)=>{return o.next()}
+ vlib.EVL=(str,o)=>{return $$$ = _(_t(str)),o.next()}
+ vlib.EVM=(str,o)=>{return $$$ =_m(_t2(str)),o.next()}
+ vlib.JMP=(str,o)=>{
+  let a=str.split('>>>'),addr=_m(a[1]),i=/^\d+$/.test(addr)?parseInt(i):o.search(addr)
   //console.log(a)
-  if($$a!=addr)o.setjumpback() //v0.9
+  if($MRK!=addr)o.setjumpback() //v0.9
   let flg = _(_t(a[0]));
   $$$ =flg;
   //console.log('!jump!',i)
-  return (!flg || i==void 0)?o.next():o.next(i)
+  if(!flg || i==void 0)return o.next()
+  else return $JMP=i,o.next(i)
  }
- cmds.MRK=(str,o)=>{
+ vlib.MRK=(str,o)=>{
   $$$ = o.line////////
-  $$a =str;//v0.9
+  $MRK =str;//v0.9
   let n=$$f[str]
   if(n||n===0) $$f[str]=n+1
   return o.next();
  }
- cmds.WIT=(str,o)=>{
-  let time=o.waitms*str.length
-  let cl=setTimeout(()=>{clearTimeout(cl),o.next()},time)
-  return;
+ vlib.FNC=(str,o)=>{
+  let a=str.split('>'),cmd=a[0],_str=a[1]
+  if(!vlib[cmd])return vlib.CMM(str,o),console.log('vlib cmd not found',cmd)
+  return vlib[cmd](_str,o) //call next() is top function
  }
- cmds.KWT=(str,o)=>{
-  $$k=void 0
-  keycall((k,del)=>{
-   if(k) del(),o.next();
-  })
-  return;
- } 
- cmds.SEL=(str,o)=>{
-  //...
-  let a=str.split('>')
-  ,list=_(_t(a[1]));
-  let se=list.split('\n')
-  ,head=$$o//=se[n]
-  $$n=0;
-  $$s=se;
-  $$o=selnum(se,$$n,head,'＊',4);  
-  keycall((k,del)=>{
-   if(k==='B')return $$n=-1,del(),o.next();
-   if(k==='A')return $$$=se[$$n],del(),o.next();
-   if(k==='^') $$n--,$$n=($$n<0)?se.length-1:$$n
-   if(k==='v') $$n++,$$n=$$n%se.length;
-   $$o=selnum(se,$$n,head,'＊',4);   
-  })
- }
- cmds.MES=(str,o)=>{
-  let a=str.split('>'),mes=_m(a[1],1)
-  $$$=$$o=mes,o.next()
-  return o.next()
- }
-
- root.cmds=cmds
+ root.vlib=vlib
 })(this);
 //////////////////////////////////  
 ;(function(root){
