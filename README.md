@@ -1,6 +1,9 @@
 # vit
 ## v1.1
 ```
+if key to touch rewrite the vlib.k
+```
+```
 script(src="https://gnjo.github.io/vit/variable.js?v=1.0")
 script(src="https://gnjo.github.io/vit/vit.js?v=1.1")
 ```
