@@ -20,3 +20,11 @@ n>who is this? //first select n
 wait>1000
 
 ```
+```
+wiredry //wiredry only
+
+wiredry.setup(opt)
+let lib={}
+wiredry.run(text,lib)
+
+```
