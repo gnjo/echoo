@@ -1,7 +1,7 @@
 ## game core thinking
 ```
 {{{js
-
+//CR HIDE SHOW
 }}}
 se>
 im>
