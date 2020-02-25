@@ -25,6 +25,7 @@ wiredry //wiredry only
 
 wiredry.setup(opt)
 let lib={}
-wiredry.run(text,lib)
+wiredry.vlib=Object.assign(wiredry.vlib,lib)
+wiredry.run(text,drawer)
 
 ```
