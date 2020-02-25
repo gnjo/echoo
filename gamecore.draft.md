@@ -29,3 +29,6 @@ wiredry.vlib=Object.assign(wiredry.vlib,lib)
 wiredry.run(text,drawer)
 
 ```
+
+## #B00X00Y00W　であらゆるイベントが可能。タイトルですら。
+
