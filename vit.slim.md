@@ -19,3 +19,26 @@ $aaa=eeaeare; //$head is single line javascript
 vit(text,userlib)
 ```
 
+```
+{{{
+select 1|200|this is sel1
+select 2|2000|this is sel2
+select 3|300|this is sel3
+}}}
+sel>{$$$}
+sel>//hide
+{{{
+hahaaha
+enter is keywait
+
+aaaa
+bbbb
+ccc
+}}}
+mes>{$$$}
+mes>//hide
+
+
+
+```
+
