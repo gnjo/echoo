@@ -12,7 +12,7 @@ $aaa=eeaeare; //$head is single line javascript
 }}}
 {1}>>>#aaa
 {1}>>>{$$$}
-
+output>id_aaaa,{$dataxyz}
 ```
 ## vit(textary,lib) vlib={} fps(frame,caller)
 ```
