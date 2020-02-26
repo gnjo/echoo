@@ -1,7 +1,6 @@
 /*history
 v0.1 make
-v1.0 seln
-
+v1.0 seln demo https://codepen.io/gnjo/pen/jOPBVNj
 */
 const CR="\n";
 var vlib={}
