@@ -26,3 +26,15 @@ seln(text,maxlen,title,maxwidth,tableflg)
 ┃ＧｒｅａｔＳｗｏｒｄ　ｉｓ　ｇｒｅａｔｅｒ’ｓ　ｓｗｏｒｄ．┃
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 ```
+
+
+```
+seln(text,w,h).head(text,pageflg).foot(text,helpflg)
+
+
+```
+
+
+
+
+
