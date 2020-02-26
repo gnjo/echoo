@@ -32,3 +32,23 @@ wiredry.run(text,drawer)
 
 ## #B00X00Y00N　であらゆるイベントが可能。タイトルですら。
 
+
+```
+wiredry.drawer(id,data,wiredry)
+```
+
+```
+drawer=(id,data,o)=>{
+ //readonly
+ if(id==='') //
+}
+```
+
+
+
+
+
+
+
+
+
