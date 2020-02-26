@@ -1,6 +1,10 @@
+/*history
+v0.1 make
+v1.0 seln
+
+*/
 const CR="\n";
 var vlib={}
-
 ;(function(root){
  var fps=60,ms=50,count=0,callary=[],running=false,stopflg=false,cl=void 0
  ;
@@ -230,4 +234,68 @@ function keycall(caller){
   return o.run();
  }
  root.vit=entry;
+})(this);
+
+
+///////////
+//seln
+///////////
+;(function(root){
+ let is=root.is||{},fn=root.fn||{}
+ ;
+ is.is=function(d){return (d||d===0)}
+ is.string = function(obj){return toString.call(obj) === '[object String]'} //
+ fn.deep=d=>JSON.parse(JSON.stringify(d));
+ fn.clone=fn.deep
+ ;
+ 
+function entry(text,maxlen){
+ ;
+ let o={};
+ o.maxlen=maxlen||2
+ o.c='*'
+ o._c=' '
+ o.baseary=is.string(text)?text.split('\n'):fn.clone(text) 
+ o.a=[]
+ o.n=0
+ o.cn=0
+ o.val=''
+ o.calc=()=>{
+  let f=(i)=>{return o.cn===i?o.c:o._c}
+  let now=o.n-o.cn
+  o.val=o.baseary[o.n]
+  o.a=o.baseary.slice(now,now+o.maxlen).map((d,i)=>f(i)+d)
+  return o;
+ }
+ o.key=(k)=>{
+  if(!(k==='^'||k==='v'))return o
+  ;
+  let n=o.n,cn=o.cn
+  if(k==='^'){
+   n=Math.max(--n,0)
+   cn=Math.max(--cn,0)      
+  }
+  if(k==='v'){
+   n=Math.min(++n,o.baseary.length-1)
+   cn=Math.min(++cn,o.maxlen-1)
+  }
+  ;
+  return o.set(n,cn)
+ }
+ o.cursor=(a,b)=>{return o.c=a,o._c=b,o}
+ o.set=(n,cn)=>{return o.n=n,o.cn=cn,o.calc() }
+ o.get=(stringflg)=>{return (stringflg)?o.a.join('\n'):o.a}
+ ;
+ return o;
+}
+ //
+ root.seln=entry;
+ //
+ /*
+$00=seln($$$,2).cursor('＊','　').set(1,1)
+$wk=d3.select('#x').text($00.get(1))
+#aaa.loop
+k>
+$wk=d3.select('#x').text( $00.key($k).get(1) ) 
+ */
 })(this);
