@@ -42,6 +42,17 @@ drawer=(id,data,o)=>{
  //readonly
  if(id==='') //
 }
+
+
+let lib={}
+lib.se=(str,o)=>{
+ $se=str;
+ return o.drawer('se',str,o),o.next()
+}
+lib.im=(str,o)=>{
+ $im=str;
+ return o.drawer('im',str,o),o.next()
+}
 ```
 
 
