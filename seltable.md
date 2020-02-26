@@ -10,3 +10,7 @@
 |GreatSword is greater's sword.             |
 +-------------------------------------------+
 ```
+
+```
+seln(text,maxlen,title,maxwidth,tableflg)
+```
