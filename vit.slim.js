@@ -239,6 +239,9 @@ function keycall(caller){
 ///////////
 //seln
 ///////////
+///////////
+//seln
+///////////
 ;(function(root){
  let is=root.is||{},fn=root.fn||{}
  ;
@@ -248,22 +251,52 @@ function keycall(caller){
  fn.clone=fn.deep
  ;
  
-function entry(text,maxlen){
+function entry(text,w,maxlen){
  ;
  let o={};
+ o.w=w //if null is no limit.
+ o.strempty=fn.fstr(' ',o.w)
  o.maxlen=maxlen||2
  o.c='*'
  o._c=' '
- o.baseary=is.string(text)?text.split('\n'):fn.clone(text) 
+ o.baseary=text.split('\n') //is.string(text)?text.split('\n'):fn.clone(text) 
+ o.tableflg=/|/.test(text)
+ o.strpage='01/01'
+ o.strhead=void 0
+ o.strfoot=void 0
+ o.pageflg=false
+ o.helpflg=false
  o.a=[]
  o.n=0
  o.cn=0
  o.val=''
+ o._page=(n,max)=>{return o.strpage=('000'+n).slice(-2)+'/'+('000'+max).slice(-2),o }
+ o.head=(text,pageflg)=>{return o.strhead=text,o.pageflg=pageflg,o }
+ o.foot=(text,helpflg)=>{return o.strfoot=text,o.helpflg=helpflg,o }
  o.calc=()=>{
   let f=(i)=>{return o.cn===i?o.c:o._c}
+  let f2=(a,b)=>{return fn.ostr(fn.rpad(a,o.w,' '),b)}
   let now=o.n-o.cn
   o.val=o.baseary[o.n]
   o.a=o.baseary.slice(now,now+o.maxlen).map((d,i)=>f(i)+d)
+  //
+  o._page(o.n+1,o.baseary.length)
+  //
+  let wkh=[''],wkf=['']
+  if(o.strhead){
+   wkh=[ (o.pageflg)?f2(o.strhead,o.strpage):o.strhead ,' '];   
+  }
+  if(o.strfoot){
+   if(o.helpflg) o.strfoot=o.val.split('|').pop()
+   wkf=['',o.strfoot]
+  }
+  //
+  if(o.w) o.a=o.a.map(d=>d.slice(0,o.w))  
+  if(o.tableflg) o.a=o.a.map(d=>{
+   let x=d.split('|')
+   return f2(x[0],x[1]||'')
+  })
+  o.a=[].concat(wkh,o.a,wkf)
   return o;
  }
  o.key=(k)=>{
@@ -283,7 +316,10 @@ function entry(text,maxlen){
  }
  o.cursor=(a,b)=>{return o.c=a,o._c=b,o}
  o.set=(n,cn)=>{return o.n=n,o.cn=cn,o.calc() }
- o.get=(stringflg)=>{return (stringflg)?o.a.join('\n'):o.a}
+ o.get=(stringflg,calc)=>{
+  let f=calc||function (d){return d}
+  return f( (stringflg)?o.a.join('\n'):o.a )
+ }
  ;
  return o;
 }
@@ -291,7 +327,7 @@ function entry(text,maxlen){
  root.seln=entry;
  //
  /*
-$00=seln($$$,2).cursor('＊','　').set(1,1)
+$00=seln($$$,30,2).cursor('＊','　').set(1,1)
 $wk=d3.select('#x').text($00.get(1))
 #aaa.loop
 k>
